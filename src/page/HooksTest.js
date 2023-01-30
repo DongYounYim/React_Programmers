@@ -12,6 +12,8 @@ import useTimeout from "../hooks/useTimeout";
 import useIntervalFn from "../hooks/useIntervalFn";
 import useInterval from "../hooks/useInterval";
 import useDebounce from "../hooks/useDebounce";
+import useAsyncFn from "../hooks/useAsyncFn";
+import useHotKey from "../hooks/useHotKey";
 
 import Image from "../components/Image";
 import { Fragment } from "react";
@@ -64,6 +66,22 @@ const companies = [
   "Line",
   "Woowahan",
 ];
+
+const asyncReturnValue = () => {
+  return new Promise((reslove) => {
+    setTimeout(() => {
+      reslove("Success");
+    }, 1000);
+  });
+};
+
+const asyncReturnError = () => {
+  return new Promise((_, reject) => {
+    setTimeout(() => {
+      reject("Error");
+    }, 1000);
+  });
+};
 
 const HooksTest = () => {
   const [ref, hover] = useHover();
@@ -144,6 +162,34 @@ const HooksTest = () => {
     300,
     [searchVal]
   );
+
+  const [asyncState, asyncCallback] = useAsyncFn(async () => {
+    return await asyncReturnValue();
+  }, []);
+
+  const [asyncStateB, asyncCallbackB] = useAsyncFn(async () => {
+    return await asyncReturnError();
+  }, []);
+
+  const hotkeys = [
+    {
+      global: true,
+      combo: "meta+o",
+      onKeyDown: (e) => {
+        alert("meta+o");
+      },
+    },
+    {
+      global: true,
+      combo: "esc",
+      onKeyDown: (e) => {
+        alert("esc");
+      },
+    },
+  ];
+
+  useHotKey(hotkeys);
+
   return (
     <>
       <Box ref={ref} />
@@ -239,7 +285,20 @@ const HooksTest = () => {
         <div>{arrayB}</div>
         <button onClick={clearIntervalB}>취소</button>
       </div>
-      <div></div>
+      <div>
+        <div>useAsyncFn 테스트</div>
+        <div>{JSON.stringify(asyncState)}</div>
+        <button onClick={asyncCallback} disabled={asyncState.isLoading}>
+          비동기 호출 성공
+        </button>
+        <div>{JSON.stringify(asyncStateB)}</div>
+        <button onClick={asyncCallbackB} disabled={asyncStateB.isLoading}>
+          비동기 호출 에러
+        </button>
+      </div>
+      <div>
+        <div>useHotKey 테스트</div>
+      </div>
     </>
   );
 };
