@@ -26,10 +26,14 @@ import FluxBox from "../components/fluxBox";
 import Breadcrumb from "../components/BreadCrumb";
 import Tab from "../components/Tab";
 
+import Modal from "../components/Modal";
+import Toast from "../components/Toast";
+
 import { useState } from "react";
 
 const ComponentsTest = () => {
   const [value, setValue] = useState(20);
+  const [visible, setVisible] = useState(false);
   return (
     <>
       <Header>Header</Header>
@@ -40,6 +44,14 @@ const ComponentsTest = () => {
         mode="cover"
       />
       <Text>Text</Text>
+      <button
+        onClick={() => {
+          let toast = new Toast();
+          toast.show("안녕하세요", 2000);
+        }}
+      >
+        Show Toast!
+      </button>
       <Spinner />
       <Badge count={10} showZero={true}>
         <Image
@@ -192,6 +204,13 @@ const ComponentsTest = () => {
         )}
       </Upload>
       <Icon name="box" size={16} strokeWidth={2} color="#222" />
+      <div>
+        <button onClick={() => setVisible(true)}>Show Modal</button>
+        <Modal visible={visible} onClose={() => setVisible(false)}>
+          Hi
+          <button onClick={() => setVisible(false)}>Close</button>
+        </Modal>
+      </div>
     </>
   );
 };
