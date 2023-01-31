@@ -1,35 +1,45 @@
-import Text from "../components/Text";
-import Header from "../components/Header";
-import Image from "../components/Image";
-
-import Box from "../components/Box";
-import Spacer from "../components/Spacer";
-
-import Spinner from "../components/Spinner";
-
-import Toggle from "../components/Toggle";
-import Upload from "../components/Upload";
-
-import Badge from "../components/Badge";
-
-import Icon from "../components/Icon";
-import Avatar from "../components/Avatar";
-import Input from "../components/Input";
-import Select from "../components/Select";
-import Slider from "../components/Slider";
-import Progress from "../components/Progress";
-
-import Divider from "../components/Divider";
-import Skeleton from "../components/Skeleton";
-import Flux from "../components/Flux";
-import FluxBox from "../components/fluxBox";
-import Breadcrumb from "../components/BreadCrumb";
-import Tab from "../components/Tab";
-
-import Modal from "../components/Modal";
-import Toast from "../components/Toast";
+import {
+  Text,
+  Header,
+  Image,
+  Spacer,
+  Spinner,
+  Toggle,
+  Upload,
+  Badge,
+  Icon,
+  Avatar,
+  Input,
+  Select,
+  Slider,
+  Progress,
+  Divider,
+  Skeleton,
+  Flux,
+  Breadcrumb,
+  Tab,
+  Modal,
+  Toast,
+} from "../components";
 
 import { useState } from "react";
+import styled from "styled-components";
+
+const Box = styled.div`
+  display: ${({ block }) => (block ? "none" : "inline-block")};
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+`;
+
+const FluxBox = styled.div`
+  background-color: #44b;
+  width: 100%;
+  height: 30px;
+  color: white;
+  text-align: center;
+  border-radius: 8;
+`;
 
 const ComponentsTest = () => {
   const [value, setValue] = useState(20);

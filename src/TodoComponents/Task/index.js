@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Toggle from "../../components/Toggle";
+import { Toggle } from "../../components";
 import { useTasks } from "../TaskProvider";
 
 const ListItem = styled.li`

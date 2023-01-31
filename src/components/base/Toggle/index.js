@@ -1,6 +1,6 @@
 import ToggleContainer from "./ToggleContainer";
 import styled from "styled-components";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../../../hooks/useToggle";
 import { useEffect } from "react";
 
 const ToggleSwitch = styled.div`

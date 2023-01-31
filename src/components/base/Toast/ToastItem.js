@@ -1,5 +1,5 @@
 import Text from "../Text";
-import useTimeout from "../../hooks/useTimeout";
+import useTimeout from "../../../hooks/useTimeout";
 import styled from "styled-components";
 import { useState } from "react";
 

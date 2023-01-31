@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useMemo, useEffect } from "react";
 import ReactDom from "react-dom";
-import useClickAway from "../../hooks/useClickAway";
+import useClickAway from "../../../hooks/useClickAway";
 
 const BackgroundDim = styled.div`
   position: fixed;

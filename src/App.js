@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AxiosAPI from "./page/AxiosAPI";
 
 import ComponentsTest from "./page/ComponentsTest";
 import DrawingBoard from "./page/DrawingBoard";
@@ -15,6 +16,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/drawing" element={<DrawingBoard />} />
+          <Route path="/axios" element={<AxiosAPI />} />
         </Routes>
       </BrowserRouter>
     </div>
