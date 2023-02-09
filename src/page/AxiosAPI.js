@@ -1,7 +1,6 @@
 //json placeholder 라는 페이지를 이용함
 
-import Spinner from "../components/Spinner";
-import Header from "../components/Header";
+import { Spinner, Header } from "../components";
 import useAsync from "../hooks/useAsync";
 import axios from "axios";
 import PostList from "../components/domain/PostList";

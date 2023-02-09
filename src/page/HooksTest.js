@@ -3,7 +3,7 @@ import useHover from "../hooks/useHover";
 import useScroll from "../hooks/useScroll";
 import useKey from "../hooks/useKey";
 import useKeyPress from "../hooks/useKeyPress";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import useClickAway from "../hooks/useClickAway";
 import useResize from "../hooks/useResize";
 import useForm from "../hooks/useForm";
@@ -15,8 +15,9 @@ import useDebounce from "../hooks/useDebounce";
 import useAsyncFn from "../hooks/useAsyncFn";
 import useHotKey from "../hooks/useHotKey";
 
-import Image from "../components/Image";
+import { Image } from "../components";
 import { Fragment } from "react";
+import DummyInput from "../dummyComponents/DummyInput";
 
 const Box = styled.div`
   width: 100px;
@@ -190,6 +191,12 @@ const HooksTest = () => {
 
   useHotKey(hotkeys);
 
+  // useImperativeHandle
+  // 라이브러리에서 사용될만한 특수한 컴포넌트에서 쓰이는 훅
+  // ref를 통해 사용자정의함수를 만들어 상위컴포넌트에 전달하는데
+  // 상위컴포넌트에서 하위컴포넌트에 함수로 핸들링함
+  const inputRef = useRef();
+
   return (
     <>
       <Box ref={ref} />
@@ -298,6 +305,11 @@ const HooksTest = () => {
       </div>
       <div>
         <div>useHotKey 테스트</div>
+      </div>
+      <div>
+        <DummyInput ref={inputRef} />
+        <button onClick={() => inputRef.current.focus()}>Focus</button>
+        <button onClick={() => inputRef.current.clear()}>Clear</button>
       </div>
     </>
   );

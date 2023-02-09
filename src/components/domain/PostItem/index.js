@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Header, Text, Spinner } from "../../";
+import { Header, Text, Spinner } from "../..";
 import { usePostContext } from "../../../contexts/PostProvider";
 
 const PostItem = ({ post }) => {
